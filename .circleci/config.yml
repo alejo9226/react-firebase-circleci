@@ -6,6 +6,7 @@ jobs:
       - image: cimg/node:18.0.0
     steps:
       - checkout
+      - run: ls -la
       - run:
           name: Update NPM
           command: "sudo npm install -g npm"
