@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "react-app-firebase-52972"
-  }
+    "default": "react-app-firebase-6901d",
+    "react-circleci": "react-app-firebase-6901d"
+  },
+  "targets": {},
+  "etags": {}
 }
