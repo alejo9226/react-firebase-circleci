@@ -1,6 +1,10 @@
 version: 2.1
 jobs:
   build:
+    # parameters:
+    #   name: 
+    #     type: string
+    #     default: 
     working_directory: ~/project
     docker:
       - image: cimg/node:18.0.0
@@ -25,7 +29,14 @@ jobs:
           command: npm run build
       - run:
           name: Deploy app to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN  
+          command: |
+            if [ $CIRCLE_BRANCH = "main" ]; then \
+              ./node_modules/.bin/firebase use default
+              ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
+            else \
+              echo "not deploying on $CIRCLE_BRANCH"; \
+            fi
+
 workflows:
   build-and-deploy:
     jobs:
