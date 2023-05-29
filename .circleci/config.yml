@@ -34,7 +34,7 @@ jobs:
               ./node_modules/.bin/firebase use default
               ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
             else \
-              return; \
+              echo "not deploying on $(CIRCLE_BRANCH)"; \
             fi
 
 workflows:
